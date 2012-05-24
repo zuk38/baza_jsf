@@ -7,17 +7,17 @@
 	<ui:define name="content">
 
 		<h:form id="companyForm">
-            <f:event type="postValidate" listener="#{companyBean.validatePinDob}" />
+            <f:event type="postValidate" listener="#{companyBean.validateNIPDob}" />
             
 			<h:panelGrid columns="2">
 
 				<h:outputText value="#{msg.companyFirstNameLabel}" />
 				<h:inputText id="firstName" value="#{companyBean.company.firstName}" required="#{true}"/>
 
-				<h:outputText value="#{msg.companyPinLabel}" />
-				<h:inputText id="pin" value="#{companyBean.company.pin}"
-					validator="#{companyBean.uniquePin}" required="#{true}">
-					<f:validator validatorId="pinValidator" />
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:inputText id="nip" value="#{companyBean.company.nip}"
+					validator="#{companyBean.uniqueNIP}" required="#{true}">
+					<f:validator validatorId="nipValidator" />
 				</h:inputText>
 
 				<h:outputText value="#{msg.companyDobLabel}" />
@@ -28,9 +28,9 @@
 				<h:outputText value="#{msg.companyZipCodeLabel}" />
 				<h:inputText id="zipCode" value="#{companyBean.company.zipCode}" />
 
-				<h:outputText value="#{msg.companyWeightLabel}" />
-				<h:inputText id="weight" value="#{companyBean.company.weight}">
-					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
+				<h:outputText value="#{msg.companyEmployLabel}" />
+				<h:inputText id="employ" value="#{companyBean.company.employ}">
+					<f:validateDoubleRange minimum="0" maximum="2000" />
 				</h:inputText>
 			</h:panelGrid>
 			

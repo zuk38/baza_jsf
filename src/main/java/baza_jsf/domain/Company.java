@@ -2,7 +2,6 @@ package baza_jsf.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
@@ -13,9 +12,9 @@ public class Company {
 	
 	private String firstName = "unknown";
 	private String zipCode = "";
-	private String regon = "";
+	private String nip = "";
 	private Date dateOfBirth = new Date();
-	private double weight;
+	private double employ;
 	private boolean married;
 	private int numOfChildren;
 	
@@ -36,11 +35,11 @@ public class Company {
 	}
 	
 	@Size(min = 2)
-	public String getRegon() {
-		return regon;
+	public String getNip() {
+		return nip;
 	}
-	public void setRegon(String regon) {
-		this.regon = regon;
+	public void setNip(String nip) {
+		this.nip = nip;
 	}
 	
 	@Min(0)
@@ -60,11 +59,11 @@ public class Company {
 	}
 	
 	@DecimalMin(value = "0")
-	public double getWeight() {
-		return weight;
+	public double getEmploy() {
+		return employ;
 	}
-	public void setWeight(double weight) {
-		this.weight = weight;
+	public void setEmploy(double employ) {
+		this.employ = employ;
 	}
 	
 	public boolean isMarried() {

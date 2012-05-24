@@ -16,20 +16,20 @@ public class CompanyManager {
 
 		newCompany.setFirstName(company.getFirstName());
 		newCompany.setZipCode(company.getZipCode());
-		newCompany.setRegon(company.getRegon());
+		newCompany.setNip(company.getNip());
 		newCompany.setDateOfBirth(company.getDateOfBirth());
 		newCompany.setMarried(company.isMarried());
-		newCompany.setWeight(company.getWeight());
+		newCompany.setEmploy(company.getEmploy());
 		newCompany.setNumOfChildren(company.getNumOfChildren());
 
 		db.add(newCompany);
 	}
 
-	// Removes the company with given REGON
+	// Removes the company with given NIP
 	public void deleteCompany(Company company) {
 		Company companyToRemove = null;
 		for (Company p : db) {
-			if (company.getRegon().equals(p.getRegon())) {
+			if (company.getNip().equals(p.getNip())) {
 				companyToRemove = p;
 				break;
 			}
@@ -37,8 +37,20 @@ public class CompanyManager {
 		if (companyToRemove != null)
 			db.remove(companyToRemove);
 	}
+	
+	public void editCompany(Company company){
+		Company companyToEdit = null;
+		for (Company p : db) {
+			if (company.getNip().equals(p.getNip())) {
+				companyToEdit = p;
+				break;
+			}
+		}
+		if (companyToEdit != null);
+		addCompany(companyToEdit);
+	}
 
-	public List<Company> getAllCompanys() {
+	public List<Company> getAllCompanies() {
 		return db;
 	}
 }

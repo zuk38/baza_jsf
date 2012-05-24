@@ -16,8 +16,8 @@
 					<a4j:ajax render="messages" execute="@this" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.companyPinLabel}" />
-				<h:inputText id="pin" value="#{companyBean.company.pin}" />
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:inputText id="pin" value="#{companyBean.company.nip}" />
 
 
 				<h:outputText value="#{msg.companyDobLabel}" />
@@ -42,8 +42,8 @@
 					<h:outputText id="nameOutput"
 						value="#{companyBean.company.firstName}" />
 
-					<h:outputText value="#{msg.companyPinLabel}" />
-					<h:outputText id="pinOutput" value="#{companyBean.company.pin}" />
+					<h:outputText value="#{msg.companyNIPLabel}" />
+					<h:outputText id="pinOutput" value="#{companyBean.company.nip}" />
 
 
 					<h:outputText value="#{msg.companyDobLabel}" />

@@ -21,14 +21,14 @@ import baza_jsf.service.CompanyManager;
 
 
 @SessionScoped
-
+@Named("companyBean")
 public class CompanyFormBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Company Company = new Company();
 
-	private ListDataModel<Company> Companys = new ListDataModel<Company>();
+	private ListDataModel<Company> Companies = new ListDataModel<Company>();
 
 	@Inject
 	private CompanyManager pm;
@@ -41,9 +41,9 @@ public class CompanyFormBean implements Serializable {
 		this.Company = Company;
 	}
 
-	public ListDataModel<Company> getAllCompanys() {
-		Companys.setWrappedData(pm.getAllCompanys());
-		return Companys;
+	public ListDataModel<Company> getAllCompanies() {
+		Companies.setWrappedData(pm.getAllCompanies());
+		return Companies;
 	}
 
 	// Actions
@@ -53,7 +53,7 @@ public class CompanyFormBean implements Serializable {
 		//return null;
 	}
 	public String showCompany() {
-		return "showCompanys";
+		return "showCompany";
 		//return null;
 	}
 	public String Back() {
@@ -62,9 +62,16 @@ public class CompanyFormBean implements Serializable {
 		//return null;
 	}
 	
+	public String EditCompany(){
+		Company CompanyToEdit = Companies.getRowData();
+		pm.editCompany(CompanyToEdit);
+		pm.deleteCompany(CompanyToEdit);
+		return "editSimple";
+	}
+	
 
 	public String deleteCompany() {
-		Company CompanyToDelete = Companys.getRowData();
+		Company CompanyToDelete = Companies.getRowData();
 		pm.deleteCompany(CompanyToDelete);
 		return null;
 	}
@@ -72,15 +79,15 @@ public class CompanyFormBean implements Serializable {
 	// Validators
 
 	// Business logic validation
-	public void uniqueRegon(FacesContext context, UIComponent component,
+	public void uniqueNIP(FacesContext context, UIComponent component,
 			Object value) {
 
-		String regon = (String) value;
+		String nip = (String) value;
 
-		for (Company Company : pm.getAllCompanys()) {
-			if (Company.getRegon().equalsIgnoreCase(regon)) {
+		for (Company Company : pm.getAllCompanies()) {
+			if (Company.getNip().equalsIgnoreCase(nip)) {
 				FacesMessage message = new FacesMessage(
-						"Company with this REGON already exists in database");
+						"Company with this NIP already exists in database");
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(message);
 			}
@@ -88,17 +95,17 @@ public class CompanyFormBean implements Serializable {
 	}
 
 	// Multi field validation with <f:event>
-	// Rule: first two digits of REGON must match last two digits of the year of
+	// Rule: first two digits of NIP must match last two digits of the year of
 	// birth
-	public void validatePinDob(ComponentSystemEvent event) {
+	public void validateNIPDob(ComponentSystemEvent event) {
 
 		UIForm form = (UIForm) event.getComponent();
-		UIInput pin = (UIInput) form.findComponent("pin");
+		UIInput nip = (UIInput) form.findComponent("nip");
 		UIInput dob = (UIInput) form.findComponent("dob");
 
-		if (pin.getValue() != null && dob.getValue() != null
-				&& pin.getValue().toString().length() >= 2) {
-			String twoDigitsOfPin = pin.getValue().toString().substring(0, 2);
+		if (nip.getValue() != null && dob.getValue() != null
+				&& nip.getValue().toString().length() >= 2) {
+			String twoDigitsOfPin = nip.getValue().toString().substring(0, 2);
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(((Date) dob.getValue()));
 

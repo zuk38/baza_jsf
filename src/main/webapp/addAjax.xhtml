@@ -13,10 +13,10 @@
 				<h:inputText id="firstName" value="#{companyBean.company.firstName}"
 					required="#{true}" />
 
-				<h:outputText value="#{msg.companyPinLabel}" />
-				<h:inputText id="pin" value="#{companyBean.company.pin}"
-					validator="#{companyBean.uniquePin}" required="#{true}">
-					<f:validator validatorId="pinValidator" />
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:inputText id="regon" value="#{companyBean.company.nip}"
+					validator="#{companyBean.uniqueNIP}" required="#{true}">
+					<f:validator validatorId="nipValidator" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
@@ -28,9 +28,9 @@
 				<h:outputText value="#{msg.companyZipCodeLabel}" />
 				<h:inputText id="zipCode" value="#{companyBean.company.zipCode}" />
 
-				<h:outputText value="#{msg.companyWeightLabel}" />
-				<h:inputText id="weight" value="#{companyBean.company.weight}">
-					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
+				<h:outputText value="#{msg.companyEmplyLabel}" />
+				<h:inputText id="employ" value="#{companyBean.company.employ">
+					<f:validateDoubleRange minimum="1" maximum="2000" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
 
@@ -54,8 +54,8 @@
 				<h:outputText value="#{msg.companyFirstNameLabel}" />
 				<h:outputText id="nameOutput" value="#{companyBean.company.firstName}" />
 
-				<h:outputText value="#{msg.companyPinLabel}" />
-				<h:outputText id="pinOutput" value="#{companyBean.company.pin}" />
+				<h:outputText value="#{msg.companyNIPLabel}" />
+				<h:outputText id="nipOutput" value="#{companyBean.company.nip}" />
 
 				<h:outputText value="#{msg.companyDobLabel}" />
 				<h:outputText id="dobOutput"

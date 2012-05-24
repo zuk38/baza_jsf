@@ -9,7 +9,7 @@
 	
     <h:form>
     
-     <h:dataTable value="#{companyBean.allCompanys}" var="item">
+     <h:dataTable value="#{companyBean.allCompanies}" var="item">
       <f:facet name="header">#{msg.company1}</f:facet>
       
       <h:column>
@@ -18,13 +18,13 @@
       </h:column>
       
       <h:column>
-        <f:facet name="header">#{msg.companyPinLabel}</f:facet>
-        #{item.pin}
+        <f:facet name="header">#{msg.companyNIPLabel}</f:facet>
+        #{item.nip}
       </h:column>
       
       <h:column>
-        <f:facet name="header">#{msg.companyWeightLabel}</f:facet>
-        #{item.weight}
+        <f:facet name="header">#{msg.companyEmployLabel}</f:facet>
+        #{item.employ}
       </h:column>
       
       
