@@ -8,11 +8,11 @@
 
 	<application>
 		<resource-bundle>
-			<base-name>com.example.jsfdemo.messages</base-name>
+			<base-name>baza_jsf.messages</base-name>
 			<var>msg</var>
 		</resource-bundle>
 
-		<message-bundle>com.example.jsfdemo.errormessages</message-bundle>
+		<message-bundle>baza_jsf.errormessages</message-bundle>
 
 		<locale-config>
 			<default-locale>pl</default-locale>

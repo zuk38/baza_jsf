@@ -11,7 +11,7 @@ body {
   background: #FFFFFF;
   border: 1px solid blue;
   font-size: 1.4em;
-  font-style: italic;
+  /*font-style: italic;*/
   font-family: Verdana;
   text-align: center;
   height: 50px;
@@ -46,4 +46,5 @@ body {
   right: 65px;
   top: 90px;
   height: 80%;
+ font-weight: bold;
 }

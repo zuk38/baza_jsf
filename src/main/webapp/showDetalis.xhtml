@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+    <h:form>
+    
+     <h:dataTable value="#{companyBean.allCompanys}" var="item">
+      <f:facet name="header">#{msg.company1}</f:facet>
+      
+      <h:column>
+        <f:facet name="header">#{msg.companyFirstNameLabel}</f:facet>
+        #{item.firstName}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.companyPinLabel}</f:facet>
+        #{item.pin}
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">#{msg.companyWeightLabel}</f:facet>
+        #{item.weight}
+      </h:column>
+      
+      
+      
+     </h:dataTable>
+     <h:commandButton value="#{msg.companyFormOKButton2}"
+				action="#{companyBean.Back}" />              
+	 <h:commandButton value="#{msg.companyFormOKButton}"
+				action="#{companyBean.showCompany}" />
+    </h:form>
+      
+	</ui:define>
+	
+</ui:composition>

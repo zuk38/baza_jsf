@@ -6,36 +6,36 @@
 	template="/templates/default.xhtml">
 	<ui:define name="content">
 
-		<h:form id="personForm">
-            <f:event type="postValidate" listener="#{personBean.validatePinDob}" />
+		<h:form id="companyForm">
+            <f:event type="postValidate" listener="#{companyBean.validatePinDob}" />
             
 			<h:panelGrid columns="2">
 
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}" required="#{true}"/>
+				<h:outputText value="#{msg.companyFirstNameLabel}" />
+				<h:inputText id="firstName" value="#{companyBean.company.firstName}" required="#{true}"/>
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}"
-					validator="#{personBean.uniquePin}" required="#{true}">
+				<h:outputText value="#{msg.companyPinLabel}" />
+				<h:inputText id="pin" value="#{companyBean.company.pin}"
+					validator="#{companyBean.uniquePin}" required="#{true}">
 					<f:validator validatorId="pinValidator" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personDobLabel}" />
-				<h:inputText id="dob" value="#{personBean.person.dateOfBirth}">
+				<h:outputText value="#{msg.companyDobLabel}" />
+				<h:inputText id="dob" value="#{companyBean.company.dateOfBirth}">
 				  <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
 				</h:inputText>
 
-				<h:outputText value="#{msg.personZipCodeLabel}" />
-				<h:inputText id="zipCode" value="#{personBean.person.zipCode}" />
+				<h:outputText value="#{msg.companyZipCodeLabel}" />
+				<h:inputText id="zipCode" value="#{companyBean.company.zipCode}" />
 
-				<h:outputText value="#{msg.personWeightLabel}" />
-				<h:inputText id="weight" value="#{personBean.person.weight}">
+				<h:outputText value="#{msg.companyWeightLabel}" />
+				<h:inputText id="weight" value="#{companyBean.company.weight}">
 					<f:validateDoubleRange minimum="20.5" maximum="150.5" />
 				</h:inputText>
 			</h:panelGrid>
 			
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+			<h:commandButton value="#{msg.companyFormOKButton}"
+				action="#{companyBean.addCompany}" />
 
 
 			<h:panelGrid>

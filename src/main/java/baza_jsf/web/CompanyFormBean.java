@@ -1,4 +1,4 @@
-package com.example.jsfdemo.web;
+package baza_jsf.web;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -16,60 +16,71 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.example.jsfdemo.domain.Person;
-import com.example.jsfdemo.service.PersonManager;
+import baza_jsf.domain.Company;
+import baza_jsf.service.CompanyManager;
+
 
 @SessionScoped
-@Named("personBean")
-public class PersonFormBean implements Serializable {
+
+public class CompanyFormBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Person person = new Person();
+	private Company Company = new Company();
 
-	private ListDataModel<Person> persons = new ListDataModel<Person>();
+	private ListDataModel<Company> Companys = new ListDataModel<Company>();
 
 	@Inject
-	private PersonManager pm;
+	private CompanyManager pm;
 
-	public Person getPerson() {
-		return person;
+	public Company getCompany() {
+		return Company;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setCompany(Company Company) {
+		this.Company = Company;
 	}
 
-	public ListDataModel<Person> getAllPersons() {
-		persons.setWrappedData(pm.getAllPersons());
-		return persons;
+	public ListDataModel<Company> getAllCompanys() {
+		Companys.setWrappedData(pm.getAllCompanys());
+		return Companys;
 	}
 
 	// Actions
-	public String addPerson() {
-		pm.addPerson(person);
-		return "showPersons";
+	public String addCompany() {
+		pm.addCompany(Company);
+		return "showDetalis";
 		//return null;
 	}
+	public String showCompany() {
+		return "showCompanys";
+		//return null;
+	}
+	public String Back() {
+		pm.deleteCompany(Company);
+		return "addSimple";
+		//return null;
+	}
+	
 
-	public String deletePerson() {
-		Person personToDelete = persons.getRowData();
-		pm.deletePerson(personToDelete);
+	public String deleteCompany() {
+		Company CompanyToDelete = Companys.getRowData();
+		pm.deleteCompany(CompanyToDelete);
 		return null;
 	}
 
 	// Validators
 
 	// Business logic validation
-	public void uniquePin(FacesContext context, UIComponent component,
+	public void uniqueRegon(FacesContext context, UIComponent component,
 			Object value) {
 
-		String pin = (String) value;
+		String regon = (String) value;
 
-		for (Person person : pm.getAllPersons()) {
-			if (person.getPin().equalsIgnoreCase(pin)) {
+		for (Company Company : pm.getAllCompanys()) {
+			if (Company.getRegon().equalsIgnoreCase(regon)) {
 				FacesMessage message = new FacesMessage(
-						"Person with this PIN already exists in database");
+						"Company with this REGON already exists in database");
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
 				throw new ValidatorException(message);
 			}
@@ -77,7 +88,7 @@ public class PersonFormBean implements Serializable {
 	}
 
 	// Multi field validation with <f:event>
-	// Rule: first two digits of PIN must match last two digits of the year of
+	// Rule: first two digits of REGON must match last two digits of the year of
 	// birth
 	public void validatePinDob(ComponentSystemEvent event) {
 

@@ -1,4 +1,4 @@
-package com.example.jsfdemo.web;
+package baza_jsf.web;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -7,19 +7,19 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator("pinValidator")
-public class PinValidator implements Validator {
+@FacesValidator("regonValidator")
+public class RegonValidator implements Validator {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 		
-		String pesel = (String) value;
+		String regon = (String) value;
 		
-		if (pesel.length() != 4) {
+		if (regon.length() != 4) {
 			FacesMessage message = new FacesMessage();
-			message.setDetail("PIN musi składać się z 4 cyfr");
-			message.setSummary("PIN musi składać się z 4 cyfr");
+			message.setDetail("REGON musi składać się z 5 cyfr");
+			message.setSummary("REGON musi składać się z 4 cyfr");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(message);
 		}

@@ -5,27 +5,27 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/templates/default.xhtml">
 	<ui:define name="content">
-		<h:form id="personform">
+		<h:form id="companyform">
 			<h:panelGrid columns="2">
 
-				<h:outputText value="Add Person with very simple form" />
+				<h:outputText value="Add Company with very simple form" />
 				<h:commandLink action="addSimple?faces-redirect=true">
-					<h:outputText value=" Add person " />
+					<h:outputText value=" Add Company " />
 				</h:commandLink>
 
-				<h:outputText value="Add Person with some validators" />
+				<h:outputText value="Add Company with some validators" />
 				<h:commandLink action="addValidation?faces-redirect=true">
-					<h:outputText value=" Add person " />
+					<h:outputText value=" Add Company " />
 				</h:commandLink>
 
-				<h:outputText value="Add Person with JSF 2.0 ajax support" />
+				<h:outputText value="Add Company with JSF 2.0 ajax support" />
 				<h:commandLink action="addAjax?faces-redirect=true">
-					<h:outputText value=" Add person " />
+					<h:outputText value=" Add company " />
 				</h:commandLink>
 
-				<h:outputText value="Add Person with RichFaces support" />
+				<h:outputText value="Add Company with RichFaces support" />
 				<h:commandLink action="addRF?faces-redirect=true">
-					<h:outputText value=" Add person " />
+					<h:outputText value=" Add company " />
 				</h:commandLink>
 
 			</h:panelGrid>

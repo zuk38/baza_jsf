@@ -1,17 +1,19 @@
-package com.example.jsfdemo.domain;
+package baza_jsf.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class Person {
+public class Company {
 	
 	private String firstName = "unknown";
 	private String zipCode = "";
-	private String pin = "";
+	private String regon = "";
 	private Date dateOfBirth = new Date();
 	private double weight;
 	private boolean married;
@@ -34,11 +36,11 @@ public class Person {
 	}
 	
 	@Size(min = 2)
-	public String getPin() {
-		return pin;
+	public String getRegon() {
+		return regon;
 	}
-	public void setPin(String pin) {
-		this.pin = pin;
+	public void setRegon(String regon) {
+		this.regon = regon;
 	}
 	
 	@Min(0)
@@ -57,6 +59,7 @@ public class Person {
 		this.dateOfBirth = dateOfBirth;
 	}
 	
+	@DecimalMin(value = "0")
 	public double getWeight() {
 		return weight;
 	}
