@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
 import javax.faces.component.UIInput;
@@ -19,7 +20,7 @@ import javax.inject.Named;
 import baza_jsf.domain.Company;
 import baza_jsf.service.CompanyManager;
 
-
+@ManagedBean
 @SessionScoped
 @Named("companyBean")
 public class CompanyFormBean implements Serializable {
@@ -27,8 +28,20 @@ public class CompanyFormBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Company Company = new Company();
-
+	private Company CompanyToEdit = new Company();
+	
 	private ListDataModel<Company> Companies = new ListDataModel<Company>();
+	
+	private String searchText = null;
+	
+	public String getSearchText(){
+		return searchText; 
+	}
+	
+	public void setSearchText(String s){
+		searchText = s;
+	}
+	
 
 	@Inject
 	private CompanyManager pm;
@@ -45,6 +58,26 @@ public class CompanyFormBean implements Serializable {
 		Companies.setWrappedData(pm.getAllCompanies());
 		return Companies;
 	}
+	
+	public ListDataModel<Company> getAllCompanies2() {
+		Companies.setWrappedData(pm.editCompany(CompanyToEdit));
+		return Companies;
+	}
+	
+	public ListDataModel<Company> getCompanySearch() {
+		Companies.setWrappedData(pm.searchCompany(CompanyToEdit));
+		return Companies;
+	}
+	
+	public ListDataModel<Company> getCompanyUpdate() {
+		Companies.setWrappedData(pm.searchCompany(Company));
+		return Companies;
+	}
+	
+	public boolean getAllCompanies3() {
+		if (Companies.getRowCount()==0) return true;
+		else return false;
+	}
 
 	// Actions
 	public String addCompany() {
@@ -52,6 +85,7 @@ public class CompanyFormBean implements Serializable {
 		return "showDetalis";
 		//return null;
 	}
+	
 	public String showCompany() {
 		return "showCompany";
 		//return null;
@@ -60,20 +94,32 @@ public class CompanyFormBean implements Serializable {
 		pm.deleteCompany(Company);
 		return "addSimple";
 		//return null;
+	}	
+	public String editCompany(){
+		CompanyToEdit = Companies.getRowData();
+		return "editSimple";	
 	}
 	
-	public String EditCompany(){
-		Company CompanyToEdit = Companies.getRowData();
-		pm.editCompany(CompanyToEdit);
-		pm.deleteCompany(CompanyToEdit);
-		return "editSimple";
-	}
-	
-
 	public String deleteCompany() {
 		Company CompanyToDelete = Companies.getRowData();
 		pm.deleteCompany(CompanyToDelete);
 		return null;
+	}
+
+	public String searchCompany() {
+		  CompanyToEdit.setNip(searchText);
+		  CompanyToEdit.setFirstName(searchText);
+		  return "searchResult";
+		 }
+	public String searchCompany2() {
+		  CompanyToEdit.setNip(searchText);
+		  CompanyToEdit.setFirstName(searchText);
+		  return null;
+		 }
+	
+	public String updateCompany(){
+		Company = new Company();
+		return "showCompany";
 	}
 
 	// Validators

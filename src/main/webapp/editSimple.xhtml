@@ -4,48 +4,41 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/templates/default.xhtml">
-	    <head>
+	<head>
 	        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	        <link href="./css/default.css" rel="stylesheet" type="text/css" />
 	       
-	    </head>
+	</head>
 	<ui:define name="content">
 	
     <h:form>
     
-     <h:dataTable value="#{companyBean.allCompanies}" var="item" border="0" cellpadding="0" cellspacing="0" styleClass="tableList">
+     <h:dataTable value="#{companyBean.allCompanies2}" var="item" border="0" cellpadding="0" cellspacing="0" styleClass="tableList">
       <f:facet name="header">#{msg.companyAllLabel}</f:facet>
       
       <h:column>
         <f:facet name="header">#{msg.companyFirstNameLabel}</f:facet>
-        #{item.firstName}
+        <h:inputText id="name" value="#{item.firstName}"/>
       </h:column>
-      
-      <h:column>
+       <h:column>
         <f:facet name="header">#{msg.companyNIPLabel}</f:facet>
-        #{item.nip}
+        <h:inputText id="yob" value="#{item.nip}"/>
       </h:column>
-      
-      <h:column>
+       <h:column>
         <f:facet name="header">#{msg.companyEmployLabel}</f:facet>
-        #{item.employ}
-      </h:column>
-      <h:column>
-        <f:facet name="header">#{msg.companyDobLabel}</f:facet>
-        #{item.dateOfBirth}
+        <h:inputText id="employ" value="#{item.employ}"/>
       </h:column>
       <h:column>
         <f:facet name="header">#{msg.companyZipCodeLabel}</f:facet>
-        #{item.zipCode}
+        <h:inputText id="zipCode" value="#{item.zipCode}"/>
       </h:column>
-      <h:column>
+       <h:column>
         <f:facet name="header">#{msg.action}</f:facet>
-        <h:commandButton value="#{msg.actionDelete}" action="#{companyBean.deleteCompany}"/>
-        <h:commandButton value="  #{msg.actionEdit}" action="#{companyBean.editCompany}"/>
+        <h:commandButton value="#{msg.companyButtonOKLabel}" action="#{companyBean.updateCompany}"/>
       </h:column>
       
      </h:dataTable>
-    </h:form>
+    </h:form>K
       
 	</ui:define>
 	

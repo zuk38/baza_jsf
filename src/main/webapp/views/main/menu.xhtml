@@ -20,6 +20,16 @@
 			 <h:outputText value="#{msg.companyAllLabel}" />
 		  </h:commandLink>
 		</li>
+		<li>
+		  <h:commandLink action="searchCompany?faces-redirect=true">
+			 <h:outputText value="Szukaj" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="searchCompanyAjax?faces-redirect=true">
+			 <h:outputText value="Szukaj Ajax" />
+		  </h:commandLink>
+		</li>
 	</ul>
    </h:form>
   </div>

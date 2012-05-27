@@ -3,6 +3,7 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="       http://java.sun.com/xml/ns/javaee       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
  <application>
   <resource-bundle>
    <base-name>baza_jsf. messages_pl</base-name>
@@ -14,5 +15,7 @@
    <supported-locale>pl</supported-locale>
    <supported-locale>en</supported-locale>
   </locale-config>
+  
  </application>
+ 
 </faces-config>

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 public class Company {
 	
-	private String firstName = "unknown";
+	private String firstName = "";
 	private String zipCode = "";
 	private String nip = "";
 	private Date dateOfBirth = new Date();

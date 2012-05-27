@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/templates/default.xhtml">
-	
-	<ui:define name="content">
-	
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+template="/templates/default.xhtml">
+ <head>
+	        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	        <link href="./css/default.css" rel="stylesheet" type="text/css" />
+	       
+	    </head>
+<ui:define name="content">
+
     <h:form>
     
-     <h:dataTable value="#{companyBean.allCompanies}" var="item">
-      <f:facet name="header">#{msg.company1}</f:facet>
+     <h:dataTable value="#{companyBean.companyUpdate}" var="item"  border="0" cellpadding="0" cellspacing="0" styleClass="tableList">
+      <f:facet name="header">#{msg.companyDetaisLabel}</f:facet>
       
       <h:column>
         <f:facet name="header">#{msg.companyFirstNameLabel}</f:facet>
@@ -26,16 +30,22 @@
         <f:facet name="header">#{msg.companyEmployLabel}</f:facet>
         #{item.employ}
       </h:column>
-      
-      
-      
+      <h:column>
+        <f:facet name="header">#{msg.companyDobLabel}</f:facet>
+        #{item.dateOfBirth}
+      </h:column>
+      <h:column>
+        <f:facet name="header">#{msg.companyZipCodeLabel}</f:facet>
+        #{item.zipCode}
+      </h:column>
+  
      </h:dataTable>
      <h:commandButton value="#{msg.companyFormOKButton2}"
-				action="#{companyBean.Back}" />              
-	 <h:commandButton value="#{msg.companyFormOKButton}"
-				action="#{companyBean.showCompany}" />
+action="#{companyBean.Back}" />
+<h:commandButton value="#{msg.companyFormOKButton}"
+action="#{companyBean.showCompany}" />
     </h:form>
       
-	</ui:define>
-	
+</ui:define>
+
 </ui:composition>

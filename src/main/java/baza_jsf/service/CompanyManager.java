@@ -38,18 +38,26 @@ public class CompanyManager {
 			db.remove(companyToRemove);
 	}
 	
-	public void editCompany(Company company){
-		Company companyToEdit = null;
+	public List<Company> editCompany(Company c) {
+		List<Company> cl = new ArrayList<Company>();
 		for (Company p : db) {
-			if (company.getNip().equals(p.getNip())) {
-				companyToEdit = p;
-				break;
+			if (c.getNip().equals(p.getNip())) {
+			cl.add(p);
+			break;
 			}
 		}
-		if (companyToEdit != null);
-		addCompany(companyToEdit);
+		return cl;
+		
 	}
-
+	public List<Company> searchCompany(Company c) {
+		List<Company> cl = new ArrayList<Company>();
+		for (Company p : db) {
+			if (c.getNip().equals(p.getNip()) || c.getFirstName().equals(p.getFirstName())) {
+			cl.add(p);
+			}
+		}
+		return cl;
+	}
 	public List<Company> getAllCompanies() {
 		return db;
 	}

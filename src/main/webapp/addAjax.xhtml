@@ -28,8 +28,8 @@
 				<h:outputText value="#{msg.companyZipCodeLabel}" />
 				<h:inputText id="zipCode" value="#{companyBean.company.zipCode}" />
 
-				<h:outputText value="#{msg.companyEmplyLabel}" />
-				<h:inputText id="employ" value="#{companyBean.company.employ">
+				<h:outputText value="#{msg.companyEmployLabel}" />
+				<h:inputText id="employ" value="#{companyBean.company.employ}">
 					<f:validateDoubleRange minimum="1" maximum="2000" />
 					<f:ajax execute="@this" render="messages beanState" />
 				</h:inputText>
